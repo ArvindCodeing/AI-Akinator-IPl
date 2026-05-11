@@ -34,7 +34,7 @@ async function startGame() {
   el('question-card').querySelectorAll('button').forEach(b => b.disabled = true);
 
   try {
-    const res = await fetch('http://localhost:3000/start', { method: 'POST' });
+    const res = await fetch('/start', { method: 'POST' });
     const data = await res.json();
     sessionId = data.sessionId;
     processNextAIState(null, data);
@@ -54,7 +54,7 @@ async function processNextAIState(userAnswer, preloadedData = null) {
     el('question-card').querySelectorAll('button').forEach(b => b.disabled = true);
 
     try {
-      const res = await fetch('http://localhost:3000/answer', {
+      const res = await fetch('/answer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -181,7 +181,7 @@ document.addEventListener('click', (ev) => {
     el('question-text').innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Engine recalculating...';
     el('question-card').querySelectorAll('button').forEach(b => b.disabled = true);
 
-    fetch('http://localhost:3000/reject_guess', {
+    fetch('/reject_guess', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId, playerName: currentGuess })
