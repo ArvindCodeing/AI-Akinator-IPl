@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Akinator — IPL Players</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>AI Akinator — IPL Players</h1>
+      <p class="subtitle">Think of an IPL player. I'll try to guess in ≤ 10 questions.</p>
+    </header>
+
+    <section id="game">
+      <div id="status">
+        <div id="question-count">Question 0 / 10</div>
+        <div id="confidence">Confidence: 0%</div>
+      </div>
+
+      <div id="question-card">
+        <div id="question-text">Loading...</div>
+        <div id="answers" class="btn-row">
+          <button data-answer="yes" class="btn"><i class="fa-solid fa-check"></i> Yes</button>
+          <button data-answer="no" class="btn"><i class="fa-solid fa-xmark"></i> No</button>
+          <button data-answer="maybe" class="btn"><i class="fa-solid fa-question"></i> Maybe</button>
+          <button data-answer="dontknow" class="btn"><i class="fa-solid fa-minus"></i> Don't know</button>
+        </div>
+      </div>
+
+      <div id="controls" class="btn-row">
+        <button id="restart" class="btn secondary">Restart</button>
+        <button id="force-guess" class="btn secondary">Make Best Guess</button>
+      </div>
+
+      <div id="result" class="hidden">
+        <h2 id="guess-title"></h2>
+        <p id="guess-details"></p>
+        <div class="btn-row">
+          <button id="confirm-yes" class="btn">Yes — Correct</button>
+          <button id="confirm-no" class="btn">No — Incorrect</button>
+        </div>
+      </div>
+
+      <div id="live-pool" class="hidden">
+        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #bb86fc;">Live AI Deductions</h3>
+        <ul id="pool-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;"></ul>
+      </div>
+
+      <aside id="debug" class="hidden">
+        <h3>Debug</h3>
+        <pre id="debug-text"></pre>
+      </aside>
+    </section>
+
+    <footer>
+      <small>Dataset: use <code>players.json</code> (replace with your full file).</small>
+    </footer>
+    <script type="module" src="app.js?v=6"></script>
+  </main>
+</body>
+</html>
